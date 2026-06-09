@@ -304,29 +304,31 @@ function getPair(){const el=document.getElementById('el-pair');return el?el.text
 function buildTrade(cls,ico,label,main,pnlVal){const d=document.createElement('div');d.className=`alert-trade ${cls}`;d.innerHTML=`<div class="a-bar"></div><div class="a-inner"><div class="a-icon">${ico}</div><div class="a-content"><div class="a-label">${label}</div><div class="a-main">${main}</div><div class="a-detail">${getPair()} · LUCIDE 50K</div></div>${pnlVal?`<div class="a-pnl">${pnlVal}</div>`:''}</div><div class="a-timer"><div class="a-timer-fill"></div></div>`;return d;}
 function buildSub(name){const i=name.replace('@','').slice(0,2).toUpperCase();const d=document.createElement('div');d.className='alert-sub';d.innerHTML=`<div class="sub-inner"><div class="sub-avatar">${i}</div><div class="sub-texts"><div class="sub-eyebrow">Nouvel abonné Telegram</div><div class="sub-name">${name}</div><div class="sub-desc">Vient de rejoindre le canal privé ✦</div></div><div class="sub-stars"><div class="sub-star">⭐</div><div class="sub-star">⭐</div><div class="sub-star">⭐</div></div></div><div class="a-timer"><div class="a-timer-fill" style="background:var(--gold)"></div></div>`;return d;}
 
-// ── PANNEAU EXTERNE (control.html) ──
-window.addEventListener('storage', function(e) {
-  if (e.key === 'overlay_alert' && e.newValue) {
+// ── WEBSOCKET (panneau externe) ──
+function wsConnect() {
+  const ws = new WebSocket('ws://localhost:8765');
+  ws.onmessage = function(e) {
     try {
-      const d = JSON.parse(e.newValue);
-      fireAlert(d.type, d.pnl, d.name);
-    } catch(err) {}
-  }
-  if (e.key === 'overlay_stats' && e.newValue) {
-    try {
-      const d = JSON.parse(e.newValue);
-      const pct = parseInt(d.pct);
-      document.getElementById('el-bar').style.width = pct + '%';
-      document.getElementById('el-pct').textContent = pct + '%';
-      if (d.pnlDay) {
-        const p = document.getElementById('el-pnl');
-        if (d.pnlDay.startsWith('+')) { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge pos'; }
-        else if (d.pnlDay.startsWith('-')) { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge neg'; }
-        else { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge flat'; }
+      const d = JSON.parse(e.data);
+      if (d.action === 'alert') {
+        fireAlert(d.type, d.pnl, d.name);
+      }
+      if (d.action === 'stats') {
+        const pct = parseInt(d.pct);
+        document.getElementById('el-bar').style.width = pct + '%';
+        document.getElementById('el-pct').textContent = pct + '%';
+        if (d.pnlDay) {
+          const p = document.getElementById('el-pnl');
+          if (d.pnlDay.startsWith('+')) { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge pos'; }
+          else if (d.pnlDay.startsWith('-')) { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge neg'; }
+          else { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge flat'; }
+        }
       }
     } catch(err) {}
-  }
-});
+  };
+  ws.onclose = function() { setTimeout(wsConnect, 3000); };
+}
+wsConnect();
 </script>
 </body>
 </html>
