@@ -6,7 +6,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; font-family: 'Montserrat', sans-serif; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: transparent; font-family: 'Montserrat', sans-serif; }
+body { position: relative; }
+.scale-root { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; transform-origin: top left; }
 iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], div[style*="position: fixed"][style*="bottom"] { display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; }
 
 :root {
@@ -271,6 +273,7 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
 </style>
 </head>
 <body>
+<div class="scale-root" id="scaleRoot">
 
 <!-- ZONE HAUTE -->
 <div class="zone-top">
@@ -498,6 +501,19 @@ function buildSub(name){
   d.innerHTML=`<div class="sub-inner"><div class="sub-avatar">${initials}</div><div class="sub-texts"><div class="sub-eyebrow">Nouvel abonné Telegram</div><div class="sub-name">${name}</div><div class="sub-desc">Vient de rejoindre le canal privé ✦</div></div><div class="sub-stars"><div class="sub-star">⭐</div><div class="sub-star">⭐</div><div class="sub-star">⭐</div></div></div><div class="a-timer"><div class="a-timer-fill" style="background:var(--gold)"></div></div>`;
   return d;
 }
+</script>
+</div><!-- /scale-root -->
+<script>
+(function(){
+  function resize(){
+    const s=document.getElementById("scaleRoot");
+    const sx=window.innerWidth/1080;
+    const sy=window.innerHeight/1920;
+    s.style.transform="scale("+Math.min(sx,sy)+")";
+  }
+  resize();
+  window.addEventListener("resize",resize);
+})();
 </script>
 </body>
 </html>
