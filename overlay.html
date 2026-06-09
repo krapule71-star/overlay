@@ -136,11 +136,11 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
   background: var(--panel);
   border: 1px solid var(--gold-border);
   border-radius: 6px;
-  padding: 18px 16px 16px;
+  padding: 14px 12px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   position: relative;
   overflow: hidden;
 }
@@ -158,9 +158,9 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
   text-transform: uppercase;
 }
 .price-card-price {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 900;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   color: #ffffff;
   font-variant-numeric: tabular-nums;
   line-height: 1;
@@ -172,11 +172,6 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
 }
 .price-card-change.pos { color: var(--neon); }
 .price-card-change.neg { color: var(--red); }
-
-/* ══ BLOC PRIX BAS ══ */
-.prices-bottom {
-  padding: 16px 28px 0;
-}
 
 /* ══ ALERTES ══ */
 .alerts-wrap { position:fixed; top:340px; left:0; right:0; display:flex; flex-direction:column; align-items:center; z-index:5000; pointer-events:none; }
@@ -308,7 +303,7 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
 
   <!-- PRIX HAUT -->
   <div class="price-grid">
-    <div class="price-card"><div class="price-card-name">XAUUSD</div><div class="price-card-price" id="xau-price">4 332,10</div><div class="price-card-change pos" id="xau-change">▲ +0.15%</div></div>
+    <div class="price-card"><div class="price-card-name" id="el-pair">XAUUSD</div><div class="price-card-price" id="xau-price">4 332,10</div><div class="price-card-change pos" id="xau-change">▲ +0.15%</div></div>
     <div class="price-card"><div class="price-card-name">GC1!</div><div class="price-card-price" id="gc-price">4 280,50</div><div class="price-card-change neg" id="gc-change">▼ -0.03%</div></div>
     <div class="price-card"><div class="price-card-name">NQ1!</div><div class="price-card-price" id="nq-price">19 842,50</div><div class="price-card-change pos" id="nq-change">▲ +0.12%</div></div>
     <div class="price-card"><div class="price-card-name">NAS100</div><div class="price-card-price" id="nas-price">19 680,20</div><div class="price-card-change pos" id="nas-change">▲ +0.08%</div></div>
@@ -319,14 +314,6 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
 
 <!-- ZONE BASSE -->
 <div class="zone-bottom">
-  <div class="prices-bottom">
-    <div class="price-grid bottom-grid">
-      <div class="price-card"><div class="price-card-name" id="el-pair">XAUUSD</div><div class="price-card-price" id="xau-price2">4 332,10</div><div class="price-card-change pos" id="xau-change2">▲ +0.15%</div></div>
-      <div class="price-card"><div class="price-card-name">GC1!</div><div class="price-card-price" id="gc-price2">4 280,50</div><div class="price-card-change neg" id="gc-change2">▼ -0.03%</div></div>
-      <div class="price-card"><div class="price-card-name">NQ1!</div><div class="price-card-price" id="nq-price2">19 842,50</div><div class="price-card-change pos" id="nq-change2">▲ +0.12%</div></div>
-      <div class="price-card"><div class="price-card-name">NAS100</div><div class="price-card-price" id="nas-price2">19 680,20</div><div class="price-card-change pos" id="nas-change2">▲ +0.08%</div></div>
-    </div>
-  </div>
   <div class="cta-block">
     <div class="cta-icon">📢</div>
     <div class="cta-texts">
@@ -437,7 +424,6 @@ function fluctuate() {
     s.val += delta;
     const pct = parseFloat(((s.val - s.base) / s.base * 100).toFixed(2));
     setCard(pid, cid, s.val, pct);
-    setCard(pid+'2', cid+'2', s.val, pct);
   });
 }
 setInterval(fluctuate, 3000);
