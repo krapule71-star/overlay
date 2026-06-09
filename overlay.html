@@ -311,6 +311,97 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
 
 
 
+<!-- TICKER ZONE CENTRALE -->
+<div class="ticker-wrap">
+  <div class="ticker-row">
+    <div class="ticker-item">
+      <div class="ticker-name">NQ1!</div>
+      <div class="ticker-price" id="nq-price">19 842,50</div>
+      <div class="ticker-change pos" id="nq-change">▲ +0.12%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">NAS100</div>
+      <div class="ticker-price" id="nas-price">19 680,20</div>
+      <div class="ticker-change pos" id="nas-change">▲ +0.08%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name" id="el-pair">XAUUSD</div>
+      <div class="ticker-price" id="xau-price">4 332,10</div>
+      <div class="ticker-change pos" id="xau-change">▲ +0.15%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">GC1!</div>
+      <div class="ticker-price" id="gc-price">4 280,50</div>
+      <div class="ticker-change neg" id="gc-change">▼ -0.03%</div>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-item">
+      <div class="ticker-name">NQ1!</div>
+      <div class="ticker-price">19 842,50</div>
+      <div class="ticker-change pos">▲ +0.12%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">NAS100</div>
+      <div class="ticker-price">19 680,20</div>
+      <div class="ticker-change pos">▲ +0.08%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">XAUUSD</div>
+      <div class="ticker-price">4 332,10</div>
+      <div class="ticker-change pos">▲ +0.15%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">GC1!</div>
+      <div class="ticker-price">4 280,50</div>
+      <div class="ticker-change neg">▼ -0.03%</div>
+    </div>
+  </div>
+  <div class="ticker-divider"></div>
+  <div class="ticker-row">
+    <div class="ticker-item">
+      <div class="ticker-name">XAUUSD</div>
+      <div class="ticker-price">4 332,10</div>
+      <div class="ticker-change pos">▲ +0.15%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">GC1!</div>
+      <div class="ticker-price">4 280,50</div>
+      <div class="ticker-change neg">▼ -0.03%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">NQ1!</div>
+      <div class="ticker-price">19 842,50</div>
+      <div class="ticker-change pos">▲ +0.12%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">NAS100</div>
+      <div class="ticker-price">19 680,20</div>
+      <div class="ticker-change pos">▲ +0.08%</div>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-item">
+      <div class="ticker-name">XAUUSD</div>
+      <div class="ticker-price">4 332,10</div>
+      <div class="ticker-change pos">▲ +0.15%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">GC1!</div>
+      <div class="ticker-price">4 280,50</div>
+      <div class="ticker-change neg">▼ -0.03%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">NQ1!</div>
+      <div class="ticker-price">19 842,50</div>
+      <div class="ticker-change pos">▲ +0.12%</div>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-name">NAS100</div>
+      <div class="ticker-price">19 680,20</div>
+      <div class="ticker-change pos">▲ +0.08%</div>
+    </div>
+  </div>
+</div>
+
 <!-- ZONE BASSE -->
 <div class="zone-bottom">
   <div class="cta-block">
@@ -405,7 +496,7 @@ function fluctuate() {
     { id: 'nq-price', base: 19842.50, dec: 2, id2: 'nq-change' },
     { id: 'nas-price', base: 19680.20, dec: 2, id2: 'nas-change' },
     { id: 'xau-price', base: 4332.10, dec: 2, id2: 'xau-change' },
-    { id: 'gc-price', base: 4 280.50, dec: 4, id2: 'gc-change' },
+    { id: 'gc-price', base: 4280.50, dec: 4, id2: 'gc-change' },
   ];
   items.forEach(item => {
     const el = document.getElementById(item.id);
