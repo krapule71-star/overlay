@@ -297,12 +297,36 @@ let tSec=0,tRun=false,tInt=null;const pad=n=>String(n).padStart(2,'0');
 function toggleTimer(){const btn=document.getElementById('btn-timer');if(!tRun){tRun=true;btn.textContent='⏸ Pause';tInt=setInterval(()=>{tSec++;const h=Math.floor(tSec/3600),m=Math.floor((tSec%3600)/60),s=tSec%60;document.getElementById('el-timer').textContent=`⏱ ${pad(h)}:${pad(m)}:${pad(s)}`;},1000);}else{tRun=false;btn.textContent='▶ Reprendre';clearInterval(tInt);}}
 function resetTimer(){clearInterval(tInt);tRun=false;tSec=0;document.getElementById('el-timer').textContent='⏱ 00:00:00';document.getElementById('btn-timer').textContent='▶ Démarrer';}
 let queue=[],busy=false;
-function fireAlert(type){const pnl=document.getElementById('in-pnl-alert').value.trim();const name=document.getElementById('in-sub').value.trim()||'@trader';queue.push({type,pnl,name});if(!busy)nextAlert();}
+function fireAlert(type, pnl, name){if(pnl===undefined)pnl=document.getElementById('in-pnl-alert').value.trim();if(name===undefined)name=document.getElementById('in-sub').value.trim()||'@trader';queue.push({type,pnl,name});if(!busy)nextAlert();}
 function nextAlert(){if(!queue.length){busy=false;return;}busy=true;showAlert(queue.shift());}
 function showAlert({type,pnl,name}){const wrap=document.getElementById('alertsWrap'),flash=document.getElementById('flash'),border=document.getElementById('bpulse');wrap.innerHTML='';flash.className='screen-flash';border.className='border-pulse';void flash.offsetWidth;let el;if(type==='entry'){flash.classList.add('neon-flash');border.classList.add('neon');el=buildTrade('entry','📈','Entrée en position','TRADE OUVERT',null);}else if(type==='exit-win'){flash.classList.add('neon-flash');border.classList.add('neon');el=buildTrade('exit-win','✅','Position clôturée','TRADE GAGNÉ',pnl||'+???');}else if(type==='exit-loss'){flash.classList.add('red-flash');border.classList.add('red');el=buildTrade('exit-loss','❌','Position clôturée','TRADE PERDU',pnl||'-???');}else{flash.classList.add('gold-flash');border.classList.add('gold');el=buildSub(name);}wrap.appendChild(el);void el.offsetWidth;el.classList.add('show');setTimeout(()=>{el.remove();setTimeout(nextAlert,200);},5000);}
 function getPair(){const el=document.getElementById('el-pair');return el?el.textContent.trim()||'XAUUSD':'XAUUSD';}
 function buildTrade(cls,ico,label,main,pnlVal){const d=document.createElement('div');d.className=`alert-trade ${cls}`;d.innerHTML=`<div class="a-bar"></div><div class="a-inner"><div class="a-icon">${ico}</div><div class="a-content"><div class="a-label">${label}</div><div class="a-main">${main}</div><div class="a-detail">${getPair()} · LUCIDE 50K</div></div>${pnlVal?`<div class="a-pnl">${pnlVal}</div>`:''}</div><div class="a-timer"><div class="a-timer-fill"></div></div>`;return d;}
 function buildSub(name){const i=name.replace('@','').slice(0,2).toUpperCase();const d=document.createElement('div');d.className='alert-sub';d.innerHTML=`<div class="sub-inner"><div class="sub-avatar">${i}</div><div class="sub-texts"><div class="sub-eyebrow">Nouvel abonné Telegram</div><div class="sub-name">${name}</div><div class="sub-desc">Vient de rejoindre le canal privé ✦</div></div><div class="sub-stars"><div class="sub-star">⭐</div><div class="sub-star">⭐</div><div class="sub-star">⭐</div></div></div><div class="a-timer"><div class="a-timer-fill" style="background:var(--gold)"></div></div>`;return d;}
+
+// ── PANNEAU EXTERNE (control.html) ──
+window.addEventListener('storage', function(e) {
+  if (e.key === 'overlay_alert' && e.newValue) {
+    try {
+      const d = JSON.parse(e.newValue);
+      fireAlert(d.type, d.pnl, d.name);
+    } catch(err) {}
+  }
+  if (e.key === 'overlay_stats' && e.newValue) {
+    try {
+      const d = JSON.parse(e.newValue);
+      const pct = parseInt(d.pct);
+      document.getElementById('el-bar').style.width = pct + '%';
+      document.getElementById('el-pct').textContent = pct + '%';
+      if (d.pnlDay) {
+        const p = document.getElementById('el-pnl');
+        if (d.pnlDay.startsWith('+')) { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge pos'; }
+        else if (d.pnlDay.startsWith('-')) { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge neg'; }
+        else { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge flat'; }
+      }
+    } catch(err) {}
+  }
+});
 </script>
 </body>
 </html>
