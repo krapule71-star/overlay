@@ -34,7 +34,7 @@ body {
 .zone-top {
   position: absolute;
   top: 0; left: 0; right: 0;
-  padding: 28px 28px 0;
+  padding: 18px 18px 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -42,17 +42,17 @@ body {
 .top-row { display:flex; gap:16px; align-items:stretch; }
 .challenge {
   flex:1; background:var(--panel); border:1px solid var(--goldb);
-  border-radius:8px; padding:22px 24px 20px;
+  border-radius:8px; padding:16px 18px 14px;
   display:flex; flex-direction:column; justify-content:space-between;
-  position:relative; overflow:hidden; height:300px;
+  position:relative; overflow:hidden; height:260px;
 }
 .challenge::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold) 40%,var(--gold2) 60%,transparent); }
 .live-pill { display:inline-flex;align-items:center;gap:7px;font-size:18px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;background:var(--goldd);border:1px solid var(--goldb);padding:6px 16px 6px 10px;border-radius:2px;width:fit-content; }
 .live-dot { width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1.4s ease-in-out infinite;flex-shrink:0; }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.ch-title   { font-size:52px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase;margin-top:14px;line-height:1; }
-.ch-account { font-size:22px;font-weight:600;letter-spacing:4px;color:var(--light);text-transform:uppercase;margin-top:6px; }
-.ch-obj     { font-size:38px;font-weight:800;color:var(--neon);letter-spacing:2px;margin-top:6px; }
+.ch-title   { font-size:44px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase;margin-top:14px;line-height:1; }
+.ch-account { font-size:18px;font-weight:600;letter-spacing:4px;color:var(--light);text-transform:uppercase;margin-top:6px; }
+.ch-obj     { font-size:32px;font-weight:800;color:var(--neon);letter-spacing:2px;margin-top:6px; }
 .prog-wrap  { margin-top:14px; }
 .prog-meta  { display:flex;justify-content:space-between;font-size:18px;font-weight:700;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:8px; }
 .pct        { color:var(--neon);font-size:20px; }
@@ -73,7 +73,7 @@ body {
 .wc-live { position:absolute;top:12px;right:12px;display:flex;align-items:center;gap:6px;font-size:18px;font-weight:800;letter-spacing:3px;color:var(--red); }
 .wc-live::before { content:'';width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink 1.4s ease-in-out infinite; }
 .wc-tag { position:absolute;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--goldb);border-radius:0 0 7px 7px;text-align:center;font-size:16px;font-weight:700;letter-spacing:3px;color:var(--muted);text-transform:uppercase;padding:10px 4px; }
-.prices { display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px; }
+.prices { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
 .pc { background:var(--panel);border:1px solid var(--goldb);border-radius:8px;padding:20px 16px 18px;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;overflow:hidden; }
 .pc::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--goldb) 50%,transparent); }
 .pc-name  { font-size:20px;font-weight:700;letter-spacing:4px;color:rgba(212,175,55,.65);text-transform:uppercase; }
@@ -201,7 +201,7 @@ body {
   </div>
   <div class="prices">
     <div class="pc"><div class="pc-name" id="el-pair">XAUUSD</div><div class="pc-price" id="xau-price">4 261,00</div><div class="pc-chg pos" id="xau-change">▲ +0.15%</div></div>
-    <div class="pc"><div class="pc-name">GC1!</div><div class="pc-price" id="gc-price">4 285,50</div><div class="pc-chg neg" id="gc-change">▼ -0.03%</div></div>
+    <div class="pc-chg neg" id="gc-change">▼ -0.03%</div></div>
     <div class="pc"><div class="pc-name">NQ1!</div><div class="pc-price" id="nq-price">28 602,00</div><div class="pc-chg pos" id="nq-change">▲ +0.12%</div></div>
   </div>
 </div>
