@@ -6,165 +6,71 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: #0a0a0a;
-  font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  gap: 32px;
-}
-:root {
-  --gold: #D4AF37;
-  --goldb: rgba(212,175,55,0.4);
-  --goldd: rgba(212,175,55,0.1);
-  --neon: #00FF41;
-  --red: #FF3B3B;
-}
+body { background: #0a0a0a; font-family: 'Montserrat', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 28px; }
+:root { --gold:#D4AF37; --goldb:rgba(212,175,55,0.4); --goldd:rgba(212,175,55,0.1); --neon:#00FF41; --red:#FF3B3B; }
 h1 { font-size: 18px; font-weight: 900; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; }
-.subtitle { font-size: 11px; font-weight: 600; letter-spacing: 3px; color: rgba(200,200,200,0.4); text-transform: uppercase; margin-top: 4px; }
-
-.section { width: 100%; max-width: 500px; }
-.section-title { font-size: 10px; font-weight: 700; letter-spacing: 4px; color: var(--goldb); text-transform: uppercase; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(212,175,55,0.15); }
-
+.sub { font-size: 11px; font-weight: 600; letter-spacing: 3px; color: rgba(200,200,200,0.4); text-transform: uppercase; margin-top: 4px; text-align: center; }
+.conn { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; border: 1px solid; }
+.conn.ok  { color: var(--neon); border-color: rgba(0,255,65,0.4); background: rgba(0,255,65,0.08); }
+.conn.err { color: var(--red);  border-color: rgba(255,59,59,0.4); background: rgba(255,59,59,0.08); }
+.conn-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.section { width: 100%; max-width: 480px; }
+.stitle { font-size: 10px; font-weight: 700; letter-spacing: 4px; color: var(--goldb); text-transform: uppercase; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(212,175,55,0.15); }
 .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.btn {
-  padding: 24px 16px;
-  border-radius: 10px;
-  border: 2px solid;
-  background: transparent;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  transition: all .12s;
-}
-.btn:active { transform: scale(0.95); }
-.btn-ico { font-size: 32px; }
-.btn-entry { border-color: rgba(0,255,65,0.5); color: var(--neon); }
-.btn-entry:hover { background: rgba(0,255,65,0.1); }
-.btn-win   { border-color: rgba(0,255,65,0.5); color: var(--neon); }
-.btn-win:hover { background: rgba(0,255,65,0.1); }
-.btn-loss  { border-color: rgba(255,59,59,0.5); color: var(--red); }
+.btn { padding: 22px 16px; border-radius: 10px; border: 2px solid; background: transparent; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 10px; transition: all .12s; }
+.btn:active { transform: scale(0.94); }
+.btn-ico { font-size: 30px; }
+.btn-entry,.btn-win { border-color: rgba(0,255,65,0.5); color: var(--neon); }
+.btn-entry:hover,.btn-win:hover { background: rgba(0,255,65,0.1); }
+.btn-loss { border-color: rgba(255,59,59,0.5); color: var(--red); }
 .btn-loss:hover { background: rgba(255,59,59,0.1); }
-.btn-sub   { border-color: var(--goldb); color: var(--gold); grid-column: span 2; }
+.btn-sub { border-color: var(--goldb); color: var(--gold); grid-column: span 2; }
 .btn-sub:hover { background: rgba(212,175,55,0.1); }
-
-.inputs { display: flex; flex-direction: column; gap: 10px; }
+.inputs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
 .inp-row { display: flex; gap: 10px; align-items: center; }
-.inp-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(200,200,200,0.5); text-transform: uppercase; width: 100px; flex-shrink: 0; }
-input {
-  flex: 1;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 6px;
-  padding: 10px 14px;
-  font-size: 14px;
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
-  outline: none;
-}
+.inp-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(200,200,200,0.5); text-transform: uppercase; width: 90px; flex-shrink: 0; }
+input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 10px 14px; font-size: 14px; font-family: 'Montserrat', sans-serif; color: #fff; outline: none; }
 input:focus { border-color: var(--goldb); }
-
-.pnl-section { display: flex; flex-direction: column; gap: 10px; }
-.pnl-btns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-.pnl-btn {
-  padding: 14px 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: transparent;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: rgba(200,200,200,0.6);
-  cursor: pointer;
-  transition: all .12s;
-  text-align: center;
-}
+.pnl-btns { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.pnl-btn { padding: 12px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.12); background: transparent; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; color: rgba(200,200,200,0.6); cursor: pointer; transition: all .12s; }
 .pnl-btn:hover { border-color: var(--goldb); color: var(--gold); background: var(--goldd); }
-.pnl-btn:active { transform: scale(0.96); }
-
-.status {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: rgba(200,200,200,0.3);
-  text-transform: uppercase;
-  text-align: center;
-}
-.status.sent { color: var(--neon); animation: fade 2s ease forwards; }
-@keyframes fade { 0%{opacity:1} 80%{opacity:1} 100%{opacity:0} }
-
-.prog-section { display: flex; flex-direction: column; gap: 10px; }
 .prog-row { display: flex; align-items: center; gap: 12px; }
 .prog-row input[type=range] { flex: 1; accent-color: var(--neon); }
 .prog-val { font-size: 16px; font-weight: 800; color: var(--neon); width: 45px; text-align: right; }
-.apply-btn {
-  width: 100%;
-  max-width: 500px;
-  padding: 18px;
-  border-radius: 8px;
-  border: 2px solid var(--goldb);
-  background: var(--goldd);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: var(--gold);
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all .15s;
-}
+.apply-btn { width: 100%; max-width: 480px; padding: 18px; border-radius: 8px; border: 2px solid var(--goldb); background: var(--goldd); font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; cursor: pointer; }
 .apply-btn:hover { background: rgba(212,175,55,0.2); }
+.status { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(200,200,200,0.3); text-transform: uppercase; }
+.status.ok { color: var(--neon); }
 </style>
 </head>
 <body>
 
-<div>
+<div style="text-align:center">
   <h1>⚙ Panneau de contrôle</h1>
-  <div class="subtitle">Overlay TikTok Live — Trader Pro</div>
+  <div class="sub">Overlay TikTok Live — Trader Pro</div>
+</div>
+
+<div class="conn err" id="connStatus">
+  <div class="conn-dot"></div>
+  <span id="connText">Déconnecté</span>
 </div>
 
 <div class="section">
-  <div class="section-title">🔴 Alertes Live</div>
-  <div class="inputs" style="margin-bottom:14px">
-    <div class="inp-row">
-      <div class="inp-label">Abonné</div>
-      <input id="in-sub" type="text" placeholder="@pseudo">
-    </div>
-    <div class="inp-row">
-      <div class="inp-label">PNL</div>
-      <input id="in-pnl" type="text" placeholder="+450 $ ou -120 $">
-    </div>
+  <div class="stitle">🔴 Alertes Live</div>
+  <div class="inputs">
+    <div class="inp-row"><div class="inp-label">Abonné</div><input id="in-sub" type="text" placeholder="@pseudo"></div>
+    <div class="inp-row"><div class="inp-label">PNL</div><input id="in-pnl" type="text" placeholder="+450 $ ou -120 $"></div>
   </div>
   <div class="btns">
-    <button class="btn btn-entry" onclick="send('entry')">
-      <span class="btn-ico">📈</span>ENTRÉE EN TRADE
-    </button>
-    <button class="btn btn-win" onclick="send('exit-win')">
-      <span class="btn-ico">✅</span>SORTIE GAGNANTE
-    </button>
-    <button class="btn btn-loss" onclick="send('exit-loss')">
-      <span class="btn-ico">❌</span>SORTIE PERDANTE
-    </button>
-    <button class="btn btn-sub" onclick="send('sub')">
-      <span class="btn-ico">⭐</span>NOUVEL ABONNÉ TELEGRAM
-    </button>
+    <button class="btn btn-entry" onclick="send('entry')"><span class="btn-ico">📈</span>ENTRÉE</button>
+    <button class="btn btn-win"   onclick="send('exit-win')"><span class="btn-ico">✅</span>GAGNÉ</button>
+    <button class="btn btn-loss"  onclick="send('exit-loss')"><span class="btn-ico">❌</span>PERDU</button>
+    <button class="btn btn-sub"   onclick="send('sub')"><span class="btn-ico">⭐</span>NOUVEL ABONNÉ TELEGRAM</button>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">💰 PNL rapide</div>
+  <div class="stitle">💰 PNL rapide</div>
   <div class="pnl-btns">
     <button class="pnl-btn" onclick="setPnl('+100 $')">+100 $</button>
     <button class="pnl-btn" onclick="setPnl('+250 $')">+250 $</button>
@@ -176,49 +82,61 @@ input:focus { border-color: var(--goldb); }
 </div>
 
 <div class="section">
-  <div class="section-title">📊 Progression & PNL</div>
-  <div class="prog-section">
+  <div class="stitle">📊 Progression & PNL Jour</div>
+  <div style="display:flex;flex-direction:column;gap:10px">
     <div class="prog-row">
-      <div class="inp-label">Progression</div>
+      <div class="inp-label" style="font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(200,200,200,0.5);text-transform:uppercase;width:90px;flex-shrink:0">Progression</div>
       <input type="range" id="prog" min="0" max="100" value="0" oninput="document.getElementById('prog-val').textContent=this.value+'%'">
       <div class="prog-val" id="prog-val">0%</div>
     </div>
     <div class="inp-row">
-      <div class="inp-label">PNL Jour</div>
+      <div class="inp-label" style="font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(200,200,200,0.5);text-transform:uppercase;width:90px;flex-shrink:0">PNL Jour</div>
       <input id="pnl-day" type="text" placeholder="+320 $ ou -150 $">
     </div>
   </div>
 </div>
 
 <button class="apply-btn" onclick="applyStats()">✓ Appliquer au Live</button>
-
 <div class="status" id="status">En attente…</div>
 
 <script>
+let ws = null;
+
+function connect() {
+  ws = new WebSocket('ws://localhost:8765');
+  ws.onopen = () => {
+    document.getElementById('connStatus').className = 'conn ok';
+    document.getElementById('connText').textContent = 'Connecté';
+    flash('Connecté ✓');
+  };
+  ws.onclose = () => {
+    document.getElementById('connStatus').className = 'conn err';
+    document.getElementById('connText').textContent = 'Déconnecté — relance server.py';
+    setTimeout(connect, 3000);
+  };
+  ws.onerror = () => {
+    document.getElementById('connStatus').className = 'conn err';
+    document.getElementById('connText').textContent = 'Erreur — relance server.py';
+  };
+}
+connect();
+
 function send(type) {
   const pnl  = document.getElementById('in-pnl').value.trim();
   const name = document.getElementById('in-sub').value.trim() || '@trader';
-  const data = { type, pnl, name, ts: Date.now() };
-  localStorage.setItem('overlay_alert', JSON.stringify(data));
+  if (!ws || ws.readyState !== 1) { flash('❌ Non connecté'); return; }
+  ws.send(JSON.stringify({ action: 'alert', type, pnl, name }));
   flash('Alerte envoyée ✓');
 }
-
-function setPnl(val) {
-  document.getElementById('in-pnl').value = val;
-}
-
+function setPnl(v) { document.getElementById('in-pnl').value = v; }
 function applyStats() {
-  const pct    = document.getElementById('prog').value;
-  const pnlDay = document.getElementById('pnl-day').value.trim();
-  const data   = { pct, pnlDay, ts: Date.now() };
-  localStorage.setItem('overlay_stats', JSON.stringify(data));
+  if (!ws || ws.readyState !== 1) { flash('❌ Non connecté'); return; }
+  ws.send(JSON.stringify({ action: 'stats', pct: document.getElementById('prog').value, pnlDay: document.getElementById('pnl-day').value.trim() }));
   flash('Stats appliquées ✓');
 }
-
 function flash(msg) {
   const s = document.getElementById('status');
-  s.textContent = msg;
-  s.className = 'status sent';
+  s.textContent = msg; s.className = 'status ok';
   setTimeout(() => { s.className = 'status'; s.textContent = 'En attente…'; }, 2500);
 }
 </script>
