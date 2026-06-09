@@ -201,8 +201,8 @@ body {
   </div>
   <div class="prices">
     <div class="pc"><div class="pc-name" id="el-pair">XAUUSD</div><div class="pc-price" id="xau-price">4 261,00</div><div class="pc-chg pos" id="xau-change">▲ +0.15%</div></div>
-    <div class="pc"><div class="pc-name">GC1!</div><div class="pc-price" id="gc-price">4 250,50</div><div class="pc-chg neg" id="gc-change">▼ -0.03%</div></div>
-    <div class="pc"><div class="pc-name">NQ1!</div><div class="pc-price" id="nq-price">21 450,00</div><div class="pc-chg pos" id="nq-change">▲ +0.12%</div></div>
+    <div class="pc"><div class="pc-name">GC1!</div><div class="pc-price" id="gc-price">4 285,50</div><div class="pc-chg neg" id="gc-change">▼ -0.03%</div></div>
+    <div class="pc"><div class="pc-name">NQ1!</div><div class="pc-price" id="nq-price">28 602,00</div><div class="pc-chg pos" id="nq-change">▲ +0.12%</div></div>
   </div>
 </div>
 
@@ -283,8 +283,8 @@ body {
 <script>
 const P={
   xau:{base:4261.00,val:4261.00,dec:2,pid:'xau-price',cid:'xau-change'},
-  gc: {base:4250.50,val:4250.50,dec:2,pid:'gc-price', cid:'gc-change'},
-  nq: {base:21450.0,val:21450.0,dec:2,pid:'nq-price', cid:'nq-change'},
+  gc: {base:4285.50,val:4285.50,dec:2,pid:'gc-price', cid:'gc-change'},
+  nq: {base:28602.0,val:28602.0,dec:2,pid:'nq-price', cid:'nq-change'},
 };
 function tick(){Object.values(P).forEach(s=>{const d=(Math.random()-.5)*0.002*s.base;s.val+=d;const pct=((s.val-s.base)/s.base*100).toFixed(2);document.getElementById(s.pid).textContent=s.val.toLocaleString('fr-FR',{minimumFractionDigits:s.dec,maximumFractionDigits:s.dec});const c=document.getElementById(s.cid);if(d>=0){c.textContent='▲ +'+Math.abs(pct)+'%';c.className='pc-chg pos';}else{c.textContent='▼ -'+Math.abs(pct)+'%';c.className='pc-chg neg';}});}
 setInterval(tick,3000);tick();
