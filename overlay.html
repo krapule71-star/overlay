@@ -23,14 +23,20 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
   --light: rgba(230,230,230,0.82);
 }
 
-/* ══ ZONE HAUTE FIXE 320px ══ */
+/* ══ ZONE HAUTE ══ */
 .zone-top {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 320px;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 28px 0;
+  gap: 16px;
+}
+
+/* ROW CHALLENGE + WEBCAM */
+.challenge-row {
   display: flex;
   gap: 16px;
-  padding: 28px 28px 0;
   align-items: flex-start;
 }
 
@@ -116,70 +122,60 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
 .disclaimer-text { font-size: 10px; font-weight: 500; letter-spacing: 1.2px; color: rgba(160,160,160,0.38); text-transform: uppercase; text-align: center; line-height: 1.8; }
 
 
-/* ══ TICKER ANIMÉ ══ */
-.ticker-wrap {
-  position: absolute;
-  left: 0; right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+/* ══ GRILLE PRIX FIXE ══ */
+.price-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 0;
+}
+.price-grid.bottom-grid {
+  padding: 16px 0 0;
+}
+.price-card {
+  background: var(--panel);
+  border: 1px solid var(--gold-border);
+  border-radius: 6px;
+  padding: 18px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
   overflow: hidden;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  align-items: center;
 }
-
-.ticker-row {
-  display: flex;
-  gap: 60px;
-  animation: tickerScroll 18s linear infinite;
-  white-space: nowrap;
+.price-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-border) 50%, transparent);
 }
-
-.ticker-row:nth-child(2) { animation-direction: reverse; animation-duration: 22s; }
-
-@keyframes tickerScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.ticker-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  padding: 18px 30px;
-  background: rgba(0,0,0,0.75);
-  border: 1px solid rgba(212,175,55,0.2);
-  border-radius: 4px;
-  min-width: 200px;
-}
-
-.ticker-name {
-  font-size: 13px;
+.price-card-name {
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 3px;
-  color: rgba(212,175,55,0.7);
+  color: rgba(212,175,55,0.65);
   text-transform: uppercase;
 }
-
-.ticker-price {
-  font-size: 32px;
+.price-card-price {
+  font-size: 26px;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #ffffff;
   font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
+.price-card-change {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+.price-card-change.pos { color: var(--neon); }
+.price-card-change.neg { color: var(--red); }
 
-.ticker-change.pos { color: #00FF41; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; }
-.ticker-change.neg { color: #FF3B3B; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; }
-
-.ticker-divider {
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.15), transparent);
-  margin: 0 auto;
+/* ══ BLOC PRIX BAS ══ */
+.prices-bottom {
+  padding: 16px 28px 0;
 }
 
 /* ══ ALERTES ══ */
@@ -283,6 +279,7 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
 
 <!-- ZONE HAUTE -->
 <div class="zone-top">
+  <div class="challenge-row">
   <div class="challenge-block">
     <div>
       <div class="live-pill"><div class="live-dot"></div>Live Session</div>
@@ -307,103 +304,29 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
     </div>
     <div class="webcam-tagline">DISCIPLINE &nbsp;|&nbsp; PATIENCE &nbsp;|&nbsp; GESTION</div>
   </div>
-</div>
-
-
-
-<!-- TICKER ZONE CENTRALE -->
-<div class="ticker-wrap">
-  <div class="ticker-row">
-    <div class="ticker-item">
-      <div class="ticker-name">NQ1!</div>
-      <div class="ticker-price" id="nq-price">19 842,50</div>
-      <div class="ticker-change pos" id="nq-change">▲ +0.12%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">NAS100</div>
-      <div class="ticker-price" id="nas-price">19 680,20</div>
-      <div class="ticker-change pos" id="nas-change">▲ +0.08%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name" id="el-pair">XAUUSD</div>
-      <div class="ticker-price" id="xau-price">4 332,10</div>
-      <div class="ticker-change pos" id="xau-change">▲ +0.15%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">GC1!</div>
-      <div class="ticker-price" id="gc-price">4 280,50</div>
-      <div class="ticker-change neg" id="gc-change">▼ -0.03%</div>
-    </div>
-    <!-- Duplicate for seamless loop -->
-    <div class="ticker-item">
-      <div class="ticker-name">NQ1!</div>
-      <div class="ticker-price">19 842,50</div>
-      <div class="ticker-change pos">▲ +0.12%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">NAS100</div>
-      <div class="ticker-price">19 680,20</div>
-      <div class="ticker-change pos">▲ +0.08%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">XAUUSD</div>
-      <div class="ticker-price">4 332,10</div>
-      <div class="ticker-change pos">▲ +0.15%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">GC1!</div>
-      <div class="ticker-price">4 280,50</div>
-      <div class="ticker-change neg">▼ -0.03%</div>
-    </div>
   </div>
-  <div class="ticker-divider"></div>
-  <div class="ticker-row">
-    <div class="ticker-item">
-      <div class="ticker-name">XAUUSD</div>
-      <div class="ticker-price">4 332,10</div>
-      <div class="ticker-change pos">▲ +0.15%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">GC1!</div>
-      <div class="ticker-price">4 280,50</div>
-      <div class="ticker-change neg">▼ -0.03%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">NQ1!</div>
-      <div class="ticker-price">19 842,50</div>
-      <div class="ticker-change pos">▲ +0.12%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">NAS100</div>
-      <div class="ticker-price">19 680,20</div>
-      <div class="ticker-change pos">▲ +0.08%</div>
-    </div>
-    <!-- Duplicate for seamless loop -->
-    <div class="ticker-item">
-      <div class="ticker-name">XAUUSD</div>
-      <div class="ticker-price">4 332,10</div>
-      <div class="ticker-change pos">▲ +0.15%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">GC1!</div>
-      <div class="ticker-price">4 280,50</div>
-      <div class="ticker-change neg">▼ -0.03%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">NQ1!</div>
-      <div class="ticker-price">19 842,50</div>
-      <div class="ticker-change pos">▲ +0.12%</div>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-name">NAS100</div>
-      <div class="ticker-price">19 680,20</div>
-      <div class="ticker-change pos">▲ +0.08%</div>
-    </div>
+
+  <!-- PRIX HAUT -->
+  <div class="price-grid">
+    <div class="price-card"><div class="price-card-name">XAUUSD</div><div class="price-card-price" id="xau-price">4 332,10</div><div class="price-card-change pos" id="xau-change">▲ +0.15%</div></div>
+    <div class="price-card"><div class="price-card-name">GC1!</div><div class="price-card-price" id="gc-price">4 280,50</div><div class="price-card-change neg" id="gc-change">▼ -0.03%</div></div>
+    <div class="price-card"><div class="price-card-name">NQ1!</div><div class="price-card-price" id="nq-price">19 842,50</div><div class="price-card-change pos" id="nq-change">▲ +0.12%</div></div>
+    <div class="price-card"><div class="price-card-name">NAS100</div><div class="price-card-price" id="nas-price">19 680,20</div><div class="price-card-change pos" id="nas-change">▲ +0.08%</div></div>
   </div>
 </div>
+
+
 
 <!-- ZONE BASSE -->
 <div class="zone-bottom">
+  <div class="prices-bottom">
+    <div class="price-grid bottom-grid">
+      <div class="price-card"><div class="price-card-name" id="el-pair">XAUUSD</div><div class="price-card-price" id="xau-price2">4 332,10</div><div class="price-card-change pos" id="xau-change2">▲ +0.15%</div></div>
+      <div class="price-card"><div class="price-card-name">GC1!</div><div class="price-card-price" id="gc-price2">4 280,50</div><div class="price-card-change neg" id="gc-change2">▼ -0.03%</div></div>
+      <div class="price-card"><div class="price-card-name">NQ1!</div><div class="price-card-price" id="nq-price2">19 842,50</div><div class="price-card-change pos" id="nq-change2">▲ +0.12%</div></div>
+      <div class="price-card"><div class="price-card-name">NAS100</div><div class="price-card-price" id="nas-price2">19 680,20</div><div class="price-card-change pos" id="nas-change2">▲ +0.08%</div></div>
+    </div>
+  </div>
   <div class="cta-block">
     <div class="cta-icon">📢</div>
     <div class="cta-texts">
@@ -491,31 +414,34 @@ document.addEventListener('DOMContentLoaded', removeTiiny);
 
 
 // Simulation légère fluctuation prix
+const priceState = {
+  nq:  { base: 19842.50, dec: 2, val: 19842.50 },
+  nas: { base: 19680.20, dec: 2, val: 19680.20 },
+  xau: { base: 4332.10,  dec: 2, val: 4332.10 },
+  gc:  { base: 4280.50,  dec: 2, val: 4280.50 },
+};
+function setCard(priceId, changeId, val, pct) {
+  const key = priceId.replace('-price','').replace('-price2','');
+  const dec = priceState[key] ? priceState[key].dec : 2;
+  const elP = document.getElementById(priceId);
+  const elC = document.getElementById(changeId);
+  if (!elP || !elC) return;
+  elP.textContent = val.toLocaleString('fr-FR', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+  if (pct >= 0) { elC.textContent = '▲ +' + Math.abs(pct) + '%'; elC.className = 'price-card-change pos'; }
+  else          { elC.textContent = '▼ -' + Math.abs(pct) + '%'; elC.className = 'price-card-change neg'; }
+}
 function fluctuate() {
-  const items = [
-    { id: 'nq-price', base: 19842.50, dec: 2, id2: 'nq-change' },
-    { id: 'nas-price', base: 19680.20, dec: 2, id2: 'nas-change' },
-    { id: 'xau-price', base: 4332.10, dec: 2, id2: 'xau-change' },
-    { id: 'gc-price', base: 4280.50, dec: 4, id2: 'gc-change' },
-  ];
-  items.forEach(item => {
-    const el = document.getElementById(item.id);
-    const el2 = document.getElementById(item.id2);
-    if (!el || !el2) return;
-    const delta = (Math.random() - 0.5) * 0.002 * item.base;
-    const newVal = item.base + delta;
-    const pct = ((delta / item.base) * 100).toFixed(2);
-    el.textContent = newVal.toLocaleString('fr-FR', {minimumFractionDigits: item.dec, maximumFractionDigits: item.dec});
-    if (delta >= 0) {
-      el2.textContent = '▲ +' + Math.abs(pct) + '%';
-      el2.className = 'ticker-change pos';
-    } else {
-      el2.textContent = '▼ -' + Math.abs(pct) + '%';
-      el2.className = 'ticker-change neg';
-    }
+  [['nq','nq-price','nq-change'],['nas','nas-price','nas-change'],['xau','xau-price','xau-change'],['gc','gc-price','gc-change']].forEach(([key,pid,cid]) => {
+    const s = priceState[key];
+    const delta = (Math.random() - 0.5) * 0.002 * s.base;
+    s.val += delta;
+    const pct = parseFloat(((s.val - s.base) / s.base * 100).toFixed(2));
+    setCard(pid, cid, s.val, pct);
+    setCard(pid+'2', cid+'2', s.val, pct);
   });
 }
 setInterval(fluctuate, 3000);
+fluctuate();
 
 // PANNEAU
 document.addEventListener('keydown', e => {
@@ -575,7 +501,7 @@ function showAlert({type,pnl,name}) {
   wrap.appendChild(el); void el.offsetWidth; el.classList.add('show');
   setTimeout(()=>{ el.remove(); setTimeout(nextAlert,200); },5000);
 }
-function getPair(){return document.getElementById('el-pair').textContent||'XAUUSD';}
+function getPair(){const el=document.getElementById('el-pair'); return el?el.textContent.trim()||'XAUUSD':'XAUUSD';}
 function buildTrade(cls,ico,label,main,pnlVal){
   const d=document.createElement('div'); d.className=`alert-trade ${cls}`;
   d.innerHTML=`<div class="a-bar"></div><div class="a-inner"><div class="a-icon">${ico}</div><div class="a-content"><div class="a-label">${label}</div><div class="a-main">${main}</div><div class="a-detail">${getPair()} · LUCIDE 50K</div></div>${pnlVal?`<div class="a-pnl">${pnlVal}</div>`:''}</div><div class="a-timer"><div class="a-timer-fill"></div></div>`;
