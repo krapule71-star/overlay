@@ -31,7 +31,7 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
   top: 0; left: 0; right: 0;
   display: flex;
   flex-direction: column;
-  padding: 20px 16px 0;
+  padding: 20px 12px 0;
   gap: 12px;
 }
 
@@ -49,7 +49,7 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
   background: var(--panel);
   border: 1px solid var(--gold-border);
   border-radius: 6px;
-  padding: 20px 22px 18px;
+  padding: 16px 14px 14px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -65,9 +65,9 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
 .live-pill { display: inline-flex; align-items: center; gap: 7px; font-size: 9px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; background: var(--gold-dim); border: 1px solid var(--gold-border); padding: 4px 12px 4px 8px; border-radius: 2px; width: fit-content; }
 .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: blink 1.4s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
-.ch-title { font-size: 26px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; line-height: 1; margin-top: 10px; }
+.ch-title { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; line-height: 1; margin-top: 10px; }
 .ch-account { font-size: 11px; font-weight: 600; letter-spacing: 3px; color: var(--light); text-transform: uppercase; margin-top: 5px; }
-.ch-obj { font-size: 20px; font-weight: 800; color: var(--neon); letter-spacing: 1.5px; margin-top: 4px; }
+.ch-obj { font-size: 17px; font-weight: 800; color: var(--neon); letter-spacing: 1.5px; margin-top: 4px; }
 .progress-wrap { margin-top: 8px; }
 .progress-meta { display: flex; justify-content: space-between; font-size: 9px; font-weight: 700; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
 .pct { color: var(--neon); font-size: 11px; }
@@ -112,14 +112,14 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
   position: absolute;
   bottom: 0; left: 0; right: 0;
 }
-.cta-block { padding: 18px 16px; background: var(--panel2); border-top: 1px solid rgba(212,175,55,0.25); display: flex; align-items: center; gap: 18px; }
+.cta-block { padding: 18px 12px; background: var(--panel2); border-top: 1px solid rgba(212,175,55,0.25); display: flex; align-items: center; gap: 18px; }
 .cta-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--gold-dim); border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
 .cta-texts { flex: 1; }
 .cta-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 3.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 3px; }
 .cta-main { font-size: 18px; font-weight: 800; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; line-height: 1.1; }
 .cta-sub { font-size: 11px; font-weight: 500; letter-spacing: 1px; color: rgba(212,175,55,0.4); text-transform: uppercase; margin-top: 3px; }
 .cta-arrow { font-size: 30px; color: var(--gold-border); flex-shrink: 0; }
-.disclaimer { padding: 12px 16px; background: rgba(0,0,0,0.98); border-top: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; gap: 8px; }
+.disclaimer { padding: 12px 12px; background: rgba(0,0,0,0.98); border-top: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; gap: 8px; }
 .disclaimer-icon { font-size: 12px; opacity: .45; flex-shrink: 0; }
 .disclaimer-text { font-size: 10px; font-weight: 500; letter-spacing: 1.2px; color: rgba(160,160,160,0.38); text-transform: uppercase; text-align: center; line-height: 1.8; }
 
@@ -127,7 +127,7 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
 /* ══ GRILLE PRIX FIXE ══ */
 .price-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   padding: 0;
 }
@@ -309,7 +309,7 @@ iframe, [id*="tiiny"], [class*="tiiny"], [id*="powered"], [class*="powered"], di
     <div class="price-card"><div class="price-card-name" id="el-pair">XAUUSD</div><div class="price-card-price" id="xau-price">4 332,10</div><div class="price-card-change pos" id="xau-change">▲ +0.15%</div></div>
     <div class="price-card"><div class="price-card-name">GC1!</div><div class="price-card-price" id="gc-price">4 280,50</div><div class="price-card-change neg" id="gc-change">▼ -0.03%</div></div>
     <div class="price-card"><div class="price-card-name">NQ1!</div><div class="price-card-price" id="nq-price">19 842,50</div><div class="price-card-change pos" id="nq-change">▲ +0.12%</div></div>
-    <div class="price-card"><div class="price-card-name">NAS100</div><div class="price-card-price" id="nas-price">19 680,20</div><div class="price-card-change pos" id="nas-change">▲ +0.08%</div></div>
+    <div class="price-card-change pos" id="nas-change">▲ +0.08%</div></div>
   </div>
 </div>
 
