@@ -34,7 +34,7 @@ body {
 .zone-top {
   position: absolute;
   top: 0; left: 0; right: 0;
-  padding: 18px 18px 0;
+  padding: 28px 28px 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -42,17 +42,17 @@ body {
 .top-row { display:flex; gap:16px; align-items:stretch; }
 .challenge {
   flex:1; background:var(--panel); border:1px solid var(--goldb);
-  border-radius:8px; padding:16px 18px 14px;
+  border-radius:8px; padding:22px 24px 20px;
   display:flex; flex-direction:column; justify-content:space-between;
-  position:relative; overflow:hidden; height:260px;
+  position:relative; overflow:hidden; height:300px;
 }
 .challenge::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold) 40%,var(--gold2) 60%,transparent); }
 .live-pill { display:inline-flex;align-items:center;gap:7px;font-size:18px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;background:var(--goldd);border:1px solid var(--goldb);padding:6px 16px 6px 10px;border-radius:2px;width:fit-content; }
 .live-dot { width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1.4s ease-in-out infinite;flex-shrink:0; }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.ch-title   { font-size:44px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase;margin-top:14px;line-height:1; }
-.ch-account { font-size:18px;font-weight:600;letter-spacing:4px;color:var(--light);text-transform:uppercase;margin-top:6px; }
-.ch-obj     { font-size:32px;font-weight:800;color:var(--neon);letter-spacing:2px;margin-top:6px; }
+.ch-title   { font-size:52px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase;margin-top:14px;line-height:1; }
+.ch-account { font-size:22px;font-weight:600;letter-spacing:4px;color:var(--light);text-transform:uppercase;margin-top:6px; }
+.ch-obj     { font-size:38px;font-weight:800;color:var(--neon);letter-spacing:2px;margin-top:6px; }
 .prog-wrap  { margin-top:14px; }
 .prog-meta  { display:flex;justify-content:space-between;font-size:18px;font-weight:700;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:8px; }
 .pct        { color:var(--neon);font-size:20px; }
@@ -73,7 +73,7 @@ body {
 .wc-live { position:absolute;top:12px;right:12px;display:flex;align-items:center;gap:6px;font-size:18px;font-weight:800;letter-spacing:3px;color:var(--red); }
 .wc-live::before { content:'';width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink 1.4s ease-in-out infinite; }
 .wc-tag { position:absolute;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--goldb);border-radius:0 0 7px 7px;text-align:center;font-size:16px;font-weight:700;letter-spacing:3px;color:var(--muted);text-transform:uppercase;padding:10px 4px; }
-.prices { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+.prices { display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px; }
 .pc { background:var(--panel);border:1px solid var(--goldb);border-radius:8px;padding:20px 16px 18px;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;overflow:hidden; }
 .pc::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--goldb) 50%,transparent); }
 .pc-name  { font-size:20px;font-weight:700;letter-spacing:4px;color:rgba(212,175,55,.65);text-transform:uppercase; }
@@ -200,9 +200,9 @@ body {
     </div>
   </div>
   <div class="prices">
-    <div class="pc"><div class="pc-name" id="el-pair">XAUUSD</div><div class="pc-price" id="xau-price">4 261,00</div><div class="pc-chg pos" id="xau-change">▲ +0.15%</div></div>
-    <div class="pc-chg neg" id="gc-change">▼ -0.03%</div></div>
-    <div class="pc"><div class="pc-name">NQ1!</div><div class="pc-price" id="nq-price">28 602,00</div><div class="pc-chg pos" id="nq-change">▲ +0.12%</div></div>
+    <div class="pc"><div class="pc-name" id="el-pair">XAUUSD</div><div class="pc-price" id="xau-price">3 332,10</div><div class="pc-chg pos" id="xau-change">▲ +0.15%</div></div>
+    <div class="pc"><div class="pc-name">GC1!</div><div class="pc-price" id="gc-price">3 280,50</div><div class="pc-chg neg" id="gc-change">▼ -0.03%</div></div>
+    <div class="pc"><div class="pc-name">NQ1!</div><div class="pc-price" id="nq-price">19 842,50</div><div class="pc-chg pos" id="nq-change">▲ +0.12%</div></div>
   </div>
 </div>
 
@@ -282,9 +282,9 @@ body {
 
 <script>
 const P={
-  xau:{base:4261.00,val:4261.00,dec:2,pid:'xau-price',cid:'xau-change'},
-  gc: {base:4285.50,val:4285.50,dec:2,pid:'gc-price', cid:'gc-change'},
-  nq: {base:28602.0,val:28602.0,dec:2,pid:'nq-price', cid:'nq-change'},
+  xau:{base:3332.10,val:3332.10,dec:2,pid:'xau-price',cid:'xau-change'},
+  gc: {base:3280.50,val:3280.50,dec:2,pid:'gc-price', cid:'gc-change'},
+  nq: {base:19842.5,val:19842.5,dec:2,pid:'nq-price', cid:'nq-change'},
 };
 function tick(){Object.values(P).forEach(s=>{const d=(Math.random()-.5)*0.002*s.base;s.val+=d;const pct=((s.val-s.base)/s.base*100).toFixed(2);document.getElementById(s.pid).textContent=s.val.toLocaleString('fr-FR',{minimumFractionDigits:s.dec,maximumFractionDigits:s.dec});const c=document.getElementById(s.cid);if(d>=0){c.textContent='▲ +'+Math.abs(pct)+'%';c.className='pc-chg pos';}else{c.textContent='▼ -'+Math.abs(pct)+'%';c.className='pc-chg neg';}});}
 setInterval(tick,3000);tick();
@@ -297,38 +297,12 @@ let tSec=0,tRun=false,tInt=null;const pad=n=>String(n).padStart(2,'0');
 function toggleTimer(){const btn=document.getElementById('btn-timer');if(!tRun){tRun=true;btn.textContent='⏸ Pause';tInt=setInterval(()=>{tSec++;const h=Math.floor(tSec/3600),m=Math.floor((tSec%3600)/60),s=tSec%60;document.getElementById('el-timer').textContent=`⏱ ${pad(h)}:${pad(m)}:${pad(s)}`;},1000);}else{tRun=false;btn.textContent='▶ Reprendre';clearInterval(tInt);}}
 function resetTimer(){clearInterval(tInt);tRun=false;tSec=0;document.getElementById('el-timer').textContent='⏱ 00:00:00';document.getElementById('btn-timer').textContent='▶ Démarrer';}
 let queue=[],busy=false;
-function fireAlert(type, pnl, name){if(pnl===undefined)pnl=document.getElementById('in-pnl-alert').value.trim();if(name===undefined)name=document.getElementById('in-sub').value.trim()||'@trader';queue.push({type,pnl,name});if(!busy)nextAlert();}
+function fireAlert(type){const pnl=document.getElementById('in-pnl-alert').value.trim();const name=document.getElementById('in-sub').value.trim()||'@trader';queue.push({type,pnl,name});if(!busy)nextAlert();}
 function nextAlert(){if(!queue.length){busy=false;return;}busy=true;showAlert(queue.shift());}
 function showAlert({type,pnl,name}){const wrap=document.getElementById('alertsWrap'),flash=document.getElementById('flash'),border=document.getElementById('bpulse');wrap.innerHTML='';flash.className='screen-flash';border.className='border-pulse';void flash.offsetWidth;let el;if(type==='entry'){flash.classList.add('neon-flash');border.classList.add('neon');el=buildTrade('entry','📈','Entrée en position','TRADE OUVERT',null);}else if(type==='exit-win'){flash.classList.add('neon-flash');border.classList.add('neon');el=buildTrade('exit-win','✅','Position clôturée','TRADE GAGNÉ',pnl||'+???');}else if(type==='exit-loss'){flash.classList.add('red-flash');border.classList.add('red');el=buildTrade('exit-loss','❌','Position clôturée','TRADE PERDU',pnl||'-???');}else{flash.classList.add('gold-flash');border.classList.add('gold');el=buildSub(name);}wrap.appendChild(el);void el.offsetWidth;el.classList.add('show');setTimeout(()=>{el.remove();setTimeout(nextAlert,200);},5000);}
 function getPair(){const el=document.getElementById('el-pair');return el?el.textContent.trim()||'XAUUSD':'XAUUSD';}
 function buildTrade(cls,ico,label,main,pnlVal){const d=document.createElement('div');d.className=`alert-trade ${cls}`;d.innerHTML=`<div class="a-bar"></div><div class="a-inner"><div class="a-icon">${ico}</div><div class="a-content"><div class="a-label">${label}</div><div class="a-main">${main}</div><div class="a-detail">${getPair()} · LUCIDE 50K</div></div>${pnlVal?`<div class="a-pnl">${pnlVal}</div>`:''}</div><div class="a-timer"><div class="a-timer-fill"></div></div>`;return d;}
 function buildSub(name){const i=name.replace('@','').slice(0,2).toUpperCase();const d=document.createElement('div');d.className='alert-sub';d.innerHTML=`<div class="sub-inner"><div class="sub-avatar">${i}</div><div class="sub-texts"><div class="sub-eyebrow">Nouvel abonné Telegram</div><div class="sub-name">${name}</div><div class="sub-desc">Vient de rejoindre le canal privé ✦</div></div><div class="sub-stars"><div class="sub-star">⭐</div><div class="sub-star">⭐</div><div class="sub-star">⭐</div></div></div><div class="a-timer"><div class="a-timer-fill" style="background:var(--gold)"></div></div>`;return d;}
-
-// ── WEBSOCKET (panneau externe) ──
-function wsConnect() {
-  const ws = new WebSocket('ws://localhost:8765');
-  ws.onmessage = function(e) {
-    try {
-      const d = JSON.parse(e.data);
-      if (d.action === 'alert') {
-        fireAlert(d.type, d.pnl, d.name);
-      }
-      if (d.action === 'stats') {
-        const pct = parseInt(d.pct);
-        document.getElementById('el-bar').style.width = pct + '%';
-        document.getElementById('el-pct').textContent = pct + '%';
-        if (d.pnlDay) {
-          const p = document.getElementById('el-pnl');
-          if (d.pnlDay.startsWith('+')) { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge pos'; }
-          else if (d.pnlDay.startsWith('-')) { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge neg'; }
-          else { p.textContent = 'PNL : ' + d.pnlDay; p.className = 'pnl-badge flat'; }
-        }
-      }
-    } catch(err) {}
-  };
-  ws.onclose = function() { setTimeout(wsConnect, 3000); };
-}
-wsConnect();
 </script>
 </body>
 </html>
